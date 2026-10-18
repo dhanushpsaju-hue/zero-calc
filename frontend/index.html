@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZeroCalc – Scientific Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>ZeroCalc</h1>
+  <div class="who">
+    <span id="whoami"></span>
+    <button id="themeBtn" class="ghost" aria-label="Toggle theme">Theme</button>
+    <button id="logoutBtn" class="ghost">Log out</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="sci">Scientific</button>
+  <button data-tab="cur">Currency</button>
+  <button data-tab="unit">Units</button>
+  <button data-tab="date">Dates</button>
+  <button data-tab="hist">History</button>
+</nav>
+
+<main>
+  <section id="sci" class="panel active">
+    <div class="screen">
+      <input id="expr" autocomplete="off" spellcheck="false" inputmode="none" placeholder="Type or tap an expression" aria-label="Expression">
+      <div id="res">0</div>
+    </div>
+    <div class="bar">
+      <button id="modeBtn" class="chip">DEG</button>
+      <span id="memInd" class="chip off">M</span>
+      <span class="grow"></span>
+      <button class="chip" data-m="MC">MC</button><button class="chip" data-m="MR">MR</button>
+      <button class="chip" data-m="M+">M+</button><button class="chip" data-m="M-">M−</button>
+    </div>
+    <div class="keys fn" id="fnKeys"></div>
+    <div class="keys pad" id="padKeys"></div>
+  </section>
+
+  <section id="cur" class="panel">
+    <div class="form">
+      <label>Amount<input id="cAmt" type="number" value="1" step="any"></label>
+      <div class="row2">
+        <label>From<select id="cFrom"></select></label>
+        <button id="cSwap" class="ghost swap" aria-label="Swap currencies">Swap</button>
+        <label>To<select id="cTo"></select></label>
+      </div>
+      <button id="cGo" class="primary">Convert</button>
+      <div class="out" id="cOut">Enter an amount and press Convert.</div>
+      <p class="note" id="cInfo"></p>
+    </div>
+  </section>
+
+  <section id="unit" class="panel">
+    <div class="form">
+      <label>Category<select id="uCat"></select></label>
+      <label>Value<input id="uVal" type="number" value="1" step="any"></label>
+      <div class="row2">
+        <label>From<select id="uFrom"></select></label>
+        <button id="uSwap" class="ghost swap" aria-label="Swap units">Swap</button>
+        <label>To<select id="uTo"></select></label>
+      </div>
+      <button id="uGo" class="primary">Convert</button>
+      <div class="out" id="uOut">Choose units and press Convert.</div>
+    </div>
+  </section>
+
+  <section id="date" class="panel">
+    <div class="form">
+      <h2>Gap between two dates</h2>
+      <div class="row2 nogap"><label>Start<input id="d1" type="date"></label><label>End<input id="d2" type="date"></label></div>
+      <button id="dGap" class="primary">Calculate gap</button>
+      <div class="out" id="dOut">Pick two dates.</div>
+      <h2>Add or subtract days</h2>
+      <div class="row2 nogap"><label>Date<input id="d3" type="date"></label><label>Days<input id="dn" type="number" value="30" min="0"></label></div>
+      <div class="row2 nogap"><button id="dAdd" class="primary">Add days</button><button id="dSub" class="primary alt">Subtract days</button></div>
+      <div class="out" id="dOut2">Result and weekday appear here.</div>
+    </div>
+  </section>
+
+  <section id="hist" class="panel">
+    <div class="hbar">
+      <input id="hq" type="search" placeholder="Search history" aria-label="Search history">
+      <select id="hf" aria-label="Filter by module">
+        <option value="">All modules</option><option value="scientific">Scientific</option>
+        <option value="currency">Currency</option><option value="unit">Units</option><option value="date">Dates</option>
+      </select>
+      <button id="hClear" class="ghost">Clear all</button>
+    </div>
+    <p class="note" id="hNote"></p>
+    <ul id="hList" class="hlist"></ul>
+  </section>
+</main>
+
+<div id="auth" class="overlay">
+  <div class="card">
+    <h2>Welcome to ZeroCalc</h2>
+    <div class="seg"><button id="tLogin" class="active">Log in</button><button id="tSignup">Sign up</button></div>
+    <label id="nameWrap" hidden>Name<input id="aName" autocomplete="name"></label>
+    <label>Email<input id="aEmail" type="email" autocomplete="email"></label>
+    <label>Password<input id="aPass" type="password" autocomplete="current-password" minlength="8"></label>
+    <p id="aErr" class="err" role="alert"></p>
+    <button id="aGo" class="primary">Log in</button>
+    <button id="aGuest" class="ghost wide">Continue as guest (history is not saved)</button>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
