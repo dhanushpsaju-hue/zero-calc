@@ -1,5 +1,7 @@
 # ZeroCalc – Advanced Scientific Calculator
 
+**Live app:** https://zero-calc-frontend.vercel.app
+
 Stack: HTML5, CSS3, JavaScript, Node.js, Express.js, MongoDB Atlas, JWT, bcrypt.
 Deploy: Render (backend) and Vercel (frontend). Version control: GitHub.
 
