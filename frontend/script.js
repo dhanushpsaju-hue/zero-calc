@@ -1,7 +1,7 @@
 /* ZeroCalc frontend – plain JavaScript, talks only to the Express API */
 const API = ['localhost', '127.0.0.1', ''].includes(location.hostname)
   ? 'http://localhost:5000/api'
-  : 'https://YOUR-RENDER-APP.onrender.com/api';   // <- replace after deploying the backend
+  : 'https://zero-calc.onrender.com/api';  // <- replace after deploying the backend
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
